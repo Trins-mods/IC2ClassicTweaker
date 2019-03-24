@@ -17,10 +17,9 @@ group = "trinsdar.ic2classictweaker"
 archivesBaseName = "Ic2-Classic-Tweaker"
 
 minecraft {
-    version = "1.12.2-14.23.5.2772"
+    version = "${mc_version}-${forge_version}"
     runDir = "run"
-    
-    mappings = "stable_39"
+    mappings = "${mappings_version}"
 
     replace "@VERSION@", project.version
     replaceIn "IC2ClassicTweaker.java"
@@ -38,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    runtimeOnly group: 'mezz.jei', name: 'jei_1.12.2', version: jei_version
+    runtime group: 'mezz.jei', name: 'jei_1.12.2', version: jei_version
 
     deobfCompile(group: 'CraftTweaker2', name: 'ZenScript', version: craft_tweaker_version) {
         exclude group: 'org.ow2.asm'
