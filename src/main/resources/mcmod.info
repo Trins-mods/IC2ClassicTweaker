@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "ic2_classic_tweaker",
+    "name": "IC2 Classic Tweaker",
+    "description": "There are some people who insist using CraftTweaker for tweaking everything. So here you are: crafttwekaer support for machines in ic2 classic not supported by ic2 tweaker.",
+    "version": "${version}",
+    "url" : "https://github.com/Team-AbCiv/IC2Tweaker",
+    "authorList": [ "Trinsdar" ],
+    "credits": "3TUSK, for his ic2 tweaker upon which I have based some of my stuff off.",
+    "logoFile": "logo.png",
+    "useDependencyInformation": true,
+    "requiredMods": [ "ic2", "ic2-classic-spmod" ],
+    "dependencies": [ "crafttweaker", "ic2", "ic2-classic-spmod" ]
+  }
+]
