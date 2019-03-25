@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 @ModOnly("ic2")
@@ -44,7 +45,7 @@ public class RareEarthExtractorSupport {
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Add Recipe[%s, %s -> %s] to %s", this.input, ClassicRecipes.sawMill);
+            return String.format(Locale.ENGLISH, "Add Entry[%s, %s] to %s", this.value, Arrays.deepToString(this.input), ClassicRecipes.earthExtractor);
         }
     }
 
@@ -63,7 +64,7 @@ public class RareEarthExtractorSupport {
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Add Recipe[%s, %s -> %s] to %s", this.input, ClassicRecipes.sawMill);
+            return String.format(Locale.ENGLISH, "Remove Entry[%s] from %s", Arrays.deepToString(this.input), ClassicRecipes.earthExtractor);
         }
     }
 }

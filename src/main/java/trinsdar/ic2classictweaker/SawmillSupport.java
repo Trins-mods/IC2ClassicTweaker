@@ -40,7 +40,7 @@ public class SawmillSupport {
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Add Recipe[%s, %s -> %s] to %s", this.input, this.output, ClassicRecipes.sawMill);
+            return String.format(Locale.ENGLISH, "Add Recipe[%s -> %s] to %s", this.input, this.output, ClassicRecipes.sawMill);
         }
     }
 
