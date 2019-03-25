@@ -49,8 +49,9 @@ LiquidFuelGenerator.addFluid(<liquid:water>, 1000, 32);
  */
 RareEarthExtractor.addRareEarthEntries(1.0F, <minecraft:bedrock>, <minecraft:iron_block>);
 
+//TODO: Get this to actually work.
 /*
- * Arguments: inputs
+ * Arguments: inputs            Currently this doesn't actually work.
  *   - IItemStack... inputs     Removes all the specified items from the list of items giving rare earth values.
  */
 RareEarthExtractor.removeRareEarthEntries(<minecraft:iron_block>);

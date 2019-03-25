@@ -19,11 +19,12 @@ import mods.ic2.RareEarthExtractor;
 RareEarthExtractor.addRareEarthEntries(1.0F, <minecraft:bedrock>, <minecraft:iron_block>);
 ```
 
+//TODO: Get this to actually work.
 #### `removeRareEarthEntries`
 
 ```java
 /*
- * Arguments: inputs
+ * Arguments: inputs            Currently this doesn't actually work.
  *   - IItemStack... inputs     Removes all the specified items from the list of items giving rare earth values.
  */
 RareEarthExtractor.removeRareEarthEntries(<minecraft:iron_block>);
