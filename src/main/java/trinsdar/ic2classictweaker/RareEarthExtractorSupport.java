@@ -24,8 +24,8 @@ public class RareEarthExtractorSupport {
     }
 
     @ZenMethod
-    public static void removeRareEarthEntries(IItemStack... input) {
-        CraftTweakerActions.apply(new RareEarthValueRemovalAction(CraftTweakerMC.getItemStacks(input)));
+    public static void removeRareEarthEntries(IItemStack input) {
+        CraftTweakerActions.apply(new RareEarthValueRemovalAction(CraftTweakerMC.getItemStack(input)));
     }
 
     private static final class RareEarthValueAdditionAction implements IAction {
@@ -51,20 +51,20 @@ public class RareEarthExtractorSupport {
 
     private static final class RareEarthValueRemovalAction implements IAction {
 
-        private final ItemStack[] input;
+        private final ItemStack input;
 
-        RareEarthValueRemovalAction(ItemStack... input) {
+        RareEarthValueRemovalAction(ItemStack input) {
             this.input = input;
         }
 
         @Override
         public void apply() {
-            ClassicRecipes.earthExtractor.removeEntry(input);
+            ClassicRecipes.earthExtractor.removeEntry(new ItemStack(input.getItem(), 1, input.getItem().getDamage(input)));
         }
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Remove Entry[%s] from %s", Arrays.deepToString(this.input), ClassicRecipes.earthExtractor);
+            return String.format(Locale.ENGLISH, "Remove Entry[%s] from %s", this.input, ClassicRecipes.earthExtractor);
         }
     }
 }
