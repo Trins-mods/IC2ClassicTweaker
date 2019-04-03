@@ -1,7 +1,24 @@
 import mods.ic2.Sawmill;
+import mods.ic2.CanningMachine;
 import mods.ic2.ClassicElectrolyzer;
 import mods.ic2.LiquidFuelGenerator;
 import mods.ic2.RareEarthExtractor;
+
+CanningMachine.registerItemsForEffect(4, <minecraft:fish>);
+
+CanningMachine.deleteEffectId(5, true);
+
+CanningMachine.registerFuelValue(10, <minecraft:diamond_block>);
+
+CanningMachine.registerFuelMultiplier(0.5f, <minecraft:diamond>);
+
+CanningMachine.deleteItemFuel(<ic2:itemmisc:102>);
+
+CanningMachine.addCanningRecipe(<minecraft:emerald>, <minecraft:diamond>, <minecraft:bucket>);
+
+CanningMachine.removeCanningContainer(<ic2:itemcellempty>); //currently doesn'w work
+
+CanningMachine.removeCanningRecipe(<ic2:itemcellempty>, <ic2:itemmisc:352>); //currently doesn't work
 
 /*
  * Arguments: output, input
