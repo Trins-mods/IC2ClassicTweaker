@@ -6,7 +6,10 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ic2.api.classic.recipe.ClassicRecipes;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
@@ -24,8 +27,8 @@ public class RareEarthExtractorSupport {
     }
 
     @ZenMethod
-    public static void removeRareEarthEntries(IItemStack input) {
-        CraftTweakerActions.apply(new RareEarthValueRemovalAction(CraftTweakerMC.getItemStack(input)));
+    public static void removeRareEarthEntries(String input, @Optional() int meta) {
+        CraftTweakerActions.apply(new RareEarthValueRemovalAction(input, meta));
     }
 
     private static final class RareEarthValueAdditionAction implements IAction {
@@ -51,15 +54,18 @@ public class RareEarthExtractorSupport {
 
     private static final class RareEarthValueRemovalAction implements IAction {
 
-        private final ItemStack input;
+        private final String input;
+        private final int meta;
 
-        RareEarthValueRemovalAction(ItemStack input) {
+        RareEarthValueRemovalAction(String input, int meta) {
             this.input = input;
+            this.meta = meta;
         }
 
         @Override
         public void apply() {
-            ClassicRecipes.earthExtractor.removeEntry(new ItemStack(input.getItem(), 1, input.getItem().getDamage(input)));
+            ResourceLocation id = new ResourceLocation(input);
+            ClassicRecipes.earthExtractor.removeEntry(new ItemStack(Item.getByNameOrId(input), 1, meta));
         }
 
         @Override
