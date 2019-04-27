@@ -81,6 +81,7 @@ This is equivalent to add the following lines to `config/ic2/customMachineRecipe
 To remove an existed recipe, simply disable the corresponding recipe in `config/ic2/ic2machineRecipes.json`.
 
 #### `addDischargeRecipe`
+//Note: In the current version of ic2 classic the recipes get added, but the item can not be added to the correct slot due to a bug
 
 ```java
 /*

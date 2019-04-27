@@ -102,6 +102,7 @@ ClassicElectrolyzer.addBothRecipe(<minecraft:diamond>, <minecraft:dirt> * 64, 50
  */
 ClassicElectrolyzer.addChargeRecipe(<minecraft:emerald>, <minecraft:stone> * 64, 500);
 
+//Note: In the current version of ic2 classic the recipes get added, but the item can not be added to the correct slot due to a bug
 /*
  * Arguments: output, input, energy
  *   - IItemStack output
