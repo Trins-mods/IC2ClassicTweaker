@@ -14,3 +14,4 @@ Please refer to respective chapters to see if there is alternative solution.
  - [Liquid Fuel Generator](LiquidFuelGenerator.md)
  - [Rare Earth Extractor](RareEarthExtractor.md)
  - [Sawmill](Sawmill.md)
+ - [Canning Machine](CanningMachine.md)
