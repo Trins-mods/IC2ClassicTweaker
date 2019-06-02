@@ -1,6 +1,7 @@
 package trinsdar.ic2classictweaker;
 
 import ic2.api.classic.recipe.ClassicRecipes;
+import ic2.core.platform.registry.Ic2Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -70,6 +71,39 @@ public class IC2ClassicTweaker {
     }
 
     private static void initRemoveCanningMachineRecipes(){
-
+        if (Config.disableAllEmptyCanFillingRecipes){
+            ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell);
+        }else {
+            if (Config.disableHCoalCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.hydratedCoalClump);
+            }
+            if (Config.disableBioCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.bioBall);
+            }
+            if (Config.disableLavaCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, new ItemStack(Blocks.LAVA));
+            }
+            if (Config.disableWaterCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, new ItemStack(Blocks.WATER));
+            }
+            if (Config.disableUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.uraniumIngot);
+            }
+            if (Config.disableRedstoneUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.redstoneUraniumIngot);
+            }
+            if (Config.disableBlazeUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.blazeUraniumIngot);
+            }
+            if (Config.disableEnderpearlUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.enderPearlUraniumIngot);
+            }
+            if (Config.disableNetherStarUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.netherStarUraniumIngot);
+            }
+            if (Config.disableCharcoalUraniumFuelCell){
+                ClassicRecipes.canningMachine.removeCanningRecipe(Ic2Items.emptyCell, Ic2Items.charcoalUraniumIngot);
+            }
+        }
     }
 }
