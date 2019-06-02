@@ -81,13 +81,13 @@ This is equivalent to add the following lines to `config/ic2/customMachineRecipe
 To remove an existed recipe, simply disable the corresponding recipe in `config/ic2/ic2machineRecipes.json`.
 
 #### `addDischargeRecipe`
-//Note: In the current version of ic2 classic the recipes get added, but the item can not be added to the correct slot due to a bug
 
 ```java
 /*
  * Arguments: output, input, energy
- *   - IItemStack output
- *   - IItemStack input       Has to be an ItemStack, no oredict or other stuff.
+ * Technically the output gets discharged into the input.
+ *   - IItemStack output      This is what goes into the discharge slot, aka output slot.
+ *   - IItemStack input       Has to be an ItemStack, no oredict or other stuff. This is what comes out the charge slot, aka the input slot.
  *   - int energy             Total eu received from the recipe.
  */
 ClassicElectrolyzer.addDischargeRecipe(<minecraft:cobblestone> * 64, <minecraft:bedrock>, 500);

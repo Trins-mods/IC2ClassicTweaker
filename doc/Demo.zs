@@ -72,13 +72,6 @@ CanningMachine.deleteItemFuel(<ic2:itemmisc:102>);
 */
 CanningMachine.addCanningRecipe(<minecraft:emerald>, <minecraft:diamond>, <minecraft:bucket>);
 
-//TODO: make these also work
-//Not working yet
-CanningMachine.removeCanningContainer(<ic2:itemcellempty>); //currently doesn'w work
-
-//Not working yet
-CanningMachine.removeCanningRecipe(<ic2:itemcellempty>, <ic2:itemmisc:352>); //currently doesn't work
-
 /*
  * Arguments: output, input
  *   - IItemStack output
@@ -102,11 +95,11 @@ ClassicElectrolyzer.addBothRecipe(<minecraft:diamond>, <minecraft:dirt> * 64, 50
  */
 ClassicElectrolyzer.addChargeRecipe(<minecraft:emerald>, <minecraft:stone> * 64, 500);
 
-//Note: In the current version of ic2 classic the recipes get added, but the item can not be added to the correct slot due to a bug
 /*
  * Arguments: output, input, energy
- *   - IItemStack output
- *   - IItemStack input       Has to be an ItemStack, no oredict or other stuff.
+ * Technically the output gets discharged into the input.
+ *   - IItemStack output      This is what goes into the discharge slot, aka output slot.
+ *   - IItemStack input       Has to be an ItemStack, no oredict or other stuff. This is what comes out the charge slot, aka the input slot.
  *   - int energy             Total eu received from the recipe.
  */
 ClassicElectrolyzer.addDischargeRecipe(<minecraft:cobblestone> * 64, <minecraft:bedrock>, 500);
@@ -125,10 +118,3 @@ LiquidFuelGenerator.addFluid(<liquid:water>, 1000, 32);
  *   - IItemStack... inputs      Can have more then one specified for the input. If so all the specified items give the same spcified value.
  */
 RareEarthExtractor.addRareEarthEntries(1.0F, <minecraft:bedrock>, <minecraft:iron_block>);
-
-//TODO: Get this to actually work.
-/*
- * Arguments: inputs            Currently this doesn't actually work.
- *   - IItemStack... inputs     Removes all the specified items from the list of items giving rare earth values.
- */
-RareEarthExtractor.removeRareEarthEntries(<minecraft:iron_block>);

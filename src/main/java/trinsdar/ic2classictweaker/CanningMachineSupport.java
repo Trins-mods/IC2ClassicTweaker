@@ -48,12 +48,10 @@ public class CanningMachineSupport {
         CraftTweakerActions.apply(new AddCanningRecipeAction(CraftTweakerMC.getItemStack(output), IC2RecipeInputs.of(input), CraftTweakerMC.getItemStack(container)));
     }
 
-    @ZenMethod
     public static void removeCanningContainer(IItemStack container) {
         CraftTweakerActions.apply(new RemoveCanningContainerAction(CraftTweakerMC.getItemStack(container)));
     }
 
-    @ZenMethod
     public static void removeCanningRecipe(IItemStack container, IItemStack input) {
         CraftTweakerActions.apply(new RemoveCanningRecipeAction(CraftTweakerMC.getItemStack(container), CraftTweakerMC.getItemStack(input)));
     }

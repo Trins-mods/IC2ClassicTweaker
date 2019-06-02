@@ -26,7 +26,6 @@ public class RareEarthExtractorSupport {
         CraftTweakerActions.apply(new RareEarthValueAdditionAction(value, CraftTweakerMC.getItemStacks(input)));
     }
 
-    @ZenMethod
     public static void removeRareEarthEntries(String input, @Optional() int meta) {
         CraftTweakerActions.apply(new RareEarthValueRemovalAction(input, meta));
     }
