@@ -1,9 +1,9 @@
-## Semi-Fluid Generator
+## Liquid Fuel Generator
 
 ### Class
 
 ```java
-import mods.ic2.SemiFluidGenerator;
+import mods.ic2.LiquidFuelGenerator;
 ```
 
 ### Methods
