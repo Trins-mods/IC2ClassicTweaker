@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 @ModOnly("ic2")
@@ -73,7 +74,7 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.id, this.input, ClassicRecipes.canningMachine);
+            return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.id, Arrays.deepToString(this.input), ClassicRecipes.canningMachine);
         }
     }
 
