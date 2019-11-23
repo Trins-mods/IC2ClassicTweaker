@@ -1,4 +1,10 @@
-# Recipes
+# Advanced Recipes
+
+## Class
+
+```java
+import mods.ic2.AdvRecipes;
+```
 
 ## Recipe Types
 There are several types of recipes:
