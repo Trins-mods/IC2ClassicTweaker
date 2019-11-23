@@ -3,10 +3,13 @@ package trinsdar.ic2classictweaker;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
+import crafttweaker.api.item.IItemStack;
+import crafttweaker.api.minecraft.CraftTweakerMC;
 import ic2.api.classic.recipe.ClassicRecipes;
 import ic2.api.classic.recipe.custom.IClassicScrapBoxManager;
 import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenExpansion;
+import stanhebben.zenscript.annotations.ZenMethod;
 
 import java.util.Locale;
 
@@ -15,8 +18,9 @@ import java.util.Locale;
 @ZenExpansion("mods.ic2.ScrapBox")
 public class ScrapboxSupport {
 
-    public static void removeScrapboxDrop(ItemStack item){
-        CraftTweakerActions.apply(new ScrapBoxRemoveAction(item));
+    @ZenMethod
+    public static void removeScrapboxDrop(IItemStack item){
+        CraftTweakerActions.apply(new ScrapBoxRemoveAction(CraftTweakerMC.getItemStack(item)));
     }
 
     private static final class ScrapBoxRemoveAction implements IAction {
