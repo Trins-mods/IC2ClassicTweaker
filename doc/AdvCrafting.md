@@ -26,10 +26,10 @@ AdvRecipes.addShaped(output,inputs);
 
 This creates a shaped recipe for `output` using `inputs` as Ingredients.
 
-`output` is an [IItemStack](https://docs.blamejared.com/1.12/en/#Vanilla/Items/IItemStack/)  
-`inputs` is an [IIngredient](https://docs.blamejared.com/1.12/en/#Vanilla/Variable_Types/IIngredient/)[][] (see below)
+`output` is an IItemStack 
+`inputs` is an IIngredient[][] (see below)
 
-`inputs` is a 2 Dimensional [IIngredient](https://docs.blamejared.com/1.12/en/#Vanilla/Variable_Types/IIngredient/) Array.  
+`inputs` is a 2 Dimensional IIngredient Array.  
 So the recipe for Iron Leggings would be written as `[[iron,iron,iron],[iron,null,iron],[iron,null,iron]]`  
 If that looks to confusing, try splitting the arrays up into one array per line
 ```zenscript
@@ -49,8 +49,8 @@ recipes.addShapeless(output,inputs)
 
 This creates a shapeless stacked recipe for `output` using `inputs` as Ingredients.
 
-`output` is an [IItemStack](https://docs.blamejared.com/1.12/en/#/Vanilla/Items/IItemStack/)  
-`inputs` is an [IIngredient](https://docs.blamejared.com/1.12/en/#Vanilla/Variable_Types/IIngredient/)[]  (e.g. [<minecraft:dye:1>,<minecraft:dye:2>])
+`output` is an IItemStack  
+`inputs` is an IIngredient[]  (e.g. [<minecraft:dye:1>,<minecraft:dye:2>])
 
 ### addHidden
 ```zenscript
