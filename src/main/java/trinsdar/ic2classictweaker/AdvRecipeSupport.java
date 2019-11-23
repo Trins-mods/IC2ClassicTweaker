@@ -1,6 +1,5 @@
 package trinsdar.ic2classictweaker;
 
-import crafttweaker.CraftTweakerAPI;
 import crafttweaker.IAction;
 import crafttweaker.annotations.ModOnly;
 import crafttweaker.annotations.ZenRegister;
@@ -66,24 +65,24 @@ public class AdvRecipeSupport {
             int height = input.length;
             int width;
             if (height > 3){
-                printError("Outer Recipe Array can only have a max of 3 inner arrays!");
+                CraftTweakerActions.printError("Outer Recipe Array can only have a max of 3 inner arrays!");
             }
             if (height == 1){
                 width = input[0].length;
                 if (width > 3){
-                    printError("Inner Recipe Array can only have a max of 3 inputs!");
+                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
                 }
                 if (width == 1){
                     if (input[0][0] != null){
                         recipes.addRecipe(output, "A", 'A', IC2RecipeInputs.of(input[0][0]));
                     } else {
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     }
                 } else if (width == 2){
                     IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
                     IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
                     if (in00 == null && in01 == null){
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
                         recipes.addRecipe(output, "AB", 'A', in00, 'B', in01);
                     }
@@ -92,7 +91,7 @@ public class AdvRecipeSupport {
                     IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
                     IRecipeInput in02 = input[0][2] != null ? IC2RecipeInputs.of(input[0][1]) : null;
                     if (in00 == null && in01 == null && in02 == null){
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
                         recipes.addRecipe(output, "ABC", 'A', in00, 'B', in01, 'C', in02);
                     }
@@ -101,16 +100,16 @@ public class AdvRecipeSupport {
                 width = input[0].length;
                 int width2 = input[1].length;
                 if (width != width2){
-                    printError("Inner Recipe Arrays must all be the same lengths!");
+                    CraftTweakerActions.printError("Inner Recipe Arrays must all be the same lengths!");
                 }
                 if (width > 3 || width2 > 3){
-                    printError("Inner Recipe Array can only have a max of 3 inputs!");
+                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
                 }
                 if (width == 1){
                     IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
                     IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
                     if (in00 == null && in10 == null){
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
                         recipes.addRecipe(output, "A", "B", 'A', in00, 'B', in10);
                     }
@@ -120,7 +119,7 @@ public class AdvRecipeSupport {
                     IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
                     IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
                     if (in00 == null && in10 == null && in01 == null && in11 == null){
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
                         recipes.addRecipe(output, "AB", "CD", 'A', in00, 'B', in01, 'C', in10, 'D', in11);
                     }
@@ -132,7 +131,7 @@ public class AdvRecipeSupport {
                     IRecipeInput in02 = input[0][2] != null ? IC2RecipeInputs.of(input[0][2]) : null;
                     IRecipeInput in12 = input[1][2] != null ? IC2RecipeInputs.of(input[1][2]) : null;
                     if (in00 == null && in10 == null && in01 == null && in11 == null && in02 == null && in12 == null){
-                        printError("Recipe must have at least one nonnull input!");
+                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
                         recipes.addRecipe(output, "ABC", "DEF", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12);
                     }
@@ -142,7 +141,7 @@ public class AdvRecipeSupport {
                 int width2 = input[1].length;
                 int width3 = input[2].length;
                 if (width > 3 || width2 > 3 || width3 > 3){
-                    printError("Inner Recipe Array can only have a max of 3 inputs!");
+                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
                 }
                 if (width == width2 && width == width3){
                     if (width == 1){
@@ -150,7 +149,7 @@ public class AdvRecipeSupport {
                         IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
                         IRecipeInput in20 = input[2][0] != null ? IC2RecipeInputs.of(input[2][0]) : null;
                         if (in00 == null && in10 == null && in20 == null){
-                            printError("Recipe must have at least one nonnull input!");
+                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
                             recipes.addRecipe(output, "A", "B", "C", 'A', in00, 'B', in10, 'C', in20);
                         }
@@ -162,7 +161,7 @@ public class AdvRecipeSupport {
                         IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
                         IRecipeInput in21 = input[2][1] != null ? IC2RecipeInputs.of(input[2][1]) : null;
                         if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null){
-                            printError("Recipe must have at least one nonnull input!");
+                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
                             recipes.addRecipe(output, "AB", "CD", "EF", 'A', in00, 'B', in01, 'C', in10, 'D', in11, 'E', in20, 'F', in21);
                         }
@@ -177,13 +176,13 @@ public class AdvRecipeSupport {
                         IRecipeInput in12 = input[1][2] != null ? IC2RecipeInputs.of(input[1][2]) : null;
                         IRecipeInput in22 = input[2][2] != null ? IC2RecipeInputs.of(input[2][2]) : null;
                         if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null && in02 == null && in12 == null && in22 == null){
-                            printError("Recipe must have at least one nonnull input!");
+                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
                             recipes.addRecipe(output, "ABC", "DEF", "GHI", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, 'G', in20, 'H', in21, 'I', in22);
                         }
                     }
                 } else {
-                    printError("Inner Recipe Arrays must all be the same lengths!");
+                    CraftTweakerActions.printError("Inner Recipe Arrays must all be the same lengths!");
                 }
             }
         }
@@ -194,7 +193,4 @@ public class AdvRecipeSupport {
         }
     }
 
-    private static void printError(String message) {
-        CraftTweakerAPI.logError(CraftTweakerAPI.getScriptFileAndLine() + " > "+ message);
-    }
 }

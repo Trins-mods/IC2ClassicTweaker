@@ -13,4 +13,8 @@ public class CraftTweakerActions {
             action.apply();
         }
     }
+
+    static void printError(String message) {
+        CraftTweakerAPI.logError(CraftTweakerAPI.getScriptFileAndLine() + " > "+ message);
+    }
 }
