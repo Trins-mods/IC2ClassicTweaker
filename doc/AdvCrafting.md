@@ -49,7 +49,7 @@ recipes.addShapeless(output,inputs)
 
 This creates a shapeless stacked recipe for `output` using `inputs` as Ingredients.
 
-`output` is an [IItemStack](/Vanilla/Items/IItemStack/)  
+`output` is an [IItemStack](https://docs.blamejared.com/1.12/en/#/Vanilla/Items/IItemStack/)  
 `inputs` is an [IIngredient](https://docs.blamejared.com/1.12/en/#Vanilla/Variable_Types/IIngredient/)[]  (e.g. [<minecraft:dye:1>,<minecraft:dye:2>])
 
 ### addHidden

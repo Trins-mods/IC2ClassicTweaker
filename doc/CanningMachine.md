@@ -38,7 +38,6 @@ import mods.ic2.CanningMachine;
 	CanningMachine.deleteEffectId(5, false);
 ```
 
-    For info on how fuel cans work: https://github.com/TinyModularThings/IC2Classic/wiki/Fuel-Cans
 ```java
 	/*
 	 * Registers new fuel value for the input items. Used for filling a fuel can.
@@ -74,6 +73,8 @@ import mods.ic2.CanningMachine;
 	 */
     CanningMachine.deleteItemFuel(<ic2:itemmisc:102>);
 ```
+
+See [here](https://github.com/TinyModularThings/IC2Classic/wiki/Fuel-Cans) for info on how fuel cans work.
 
 ```java
 	/*
