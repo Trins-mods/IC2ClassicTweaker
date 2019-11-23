@@ -22,26 +22,38 @@ import java.util.Locale;
 public class AdvRecipeSupport {
     @ZenMethod
     public static void addShaped(IItemStack output, IIngredient[][] input){
-        CraftTweakerActions.apply(new AdvRecipeShapedAction(CraftTweakerMC.getItemStack(output), input));
+        CraftTweakerActions.apply(new AdvRecipeShapedAction(CraftTweakerMC.getItemStack(output), input, false));
     }
 
     @ZenMethod
     public static void addShapeless(IItemStack output, IIngredient[] input){
-        CraftTweakerActions.apply(new AdvRecipeShapelessAction(CraftTweakerMC.getItemStack(output), IC2RecipeInputs.of(input)));
+        CraftTweakerActions.apply(new AdvRecipeShapelessAction(CraftTweakerMC.getItemStack(output), IC2RecipeInputs.of(input), false));
+    }
+
+    @ZenMethod
+    public static void addHiddenShaped(IItemStack output, IIngredient[][] input){
+        CraftTweakerActions.apply(new AdvRecipeShapedAction(CraftTweakerMC.getItemStack(output), input, true));
+    }
+
+    @ZenMethod
+    public static void addHiddenShapeless(IItemStack output, IIngredient[] input){
+        CraftTweakerActions.apply(new AdvRecipeShapelessAction(CraftTweakerMC.getItemStack(output), IC2RecipeInputs.of(input), true));
     }
 
     private static final class AdvRecipeShapelessAction implements IAction {
         ItemStack output;
         IRecipeInput[] inputs;
+        boolean hidden;
 
-        AdvRecipeShapelessAction(ItemStack output, IRecipeInput[] inputs){
+        AdvRecipeShapelessAction(ItemStack output, IRecipeInput[] inputs, boolean hidden){
             this.output = output;
             this.inputs = inputs;
+            this.hidden = hidden;
         }
 
         @Override
         public void apply() {
-            ClassicRecipes.advCrafting.addShapelessRecipe(output, inputs);
+            ClassicRecipes.advCrafting.addShapelessRecipe(output, inputs, hidden);
         }
 
         @Override
@@ -53,10 +65,12 @@ public class AdvRecipeSupport {
     private static final class AdvRecipeShapedAction implements IAction {
         ItemStack output;
         IIngredient[][] input;
+        boolean hidden;
 
-        AdvRecipeShapedAction(ItemStack output, IIngredient[][] input){
+        AdvRecipeShapedAction(ItemStack output, IIngredient[][] input, boolean hidden){
             this.output = output;
             this.input = input;
+            this.hidden = hidden;
         }
 
         @Override
@@ -74,7 +88,7 @@ public class AdvRecipeSupport {
                 }
                 if (width == 1){
                     if (input[0][0] != null){
-                        recipes.addRecipe(output, "A", 'A', IC2RecipeInputs.of(input[0][0]));
+                        recipes.addRecipe(output, "A", 'A', IC2RecipeInputs.of(input[0][0]), hidden);
                     } else {
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     }
@@ -84,7 +98,7 @@ public class AdvRecipeSupport {
                     if (in00 == null && in01 == null){
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
-                        recipes.addRecipe(output, "AB", 'A', in00, 'B', in01);
+                        recipes.addRecipe(output, "AB", 'A', in00, 'B', in01, hidden);
                     }
                 } else if (width == 3){
                     IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
@@ -93,7 +107,7 @@ public class AdvRecipeSupport {
                     if (in00 == null && in01 == null && in02 == null){
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
-                        recipes.addRecipe(output, "ABC", 'A', in00, 'B', in01, 'C', in02);
+                        recipes.addRecipe(output, "ABC", 'A', in00, 'B', in01, 'C', in02, hidden);
                     }
                 }
             } else if (height == 2){
@@ -111,7 +125,7 @@ public class AdvRecipeSupport {
                     if (in00 == null && in10 == null){
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
-                        recipes.addRecipe(output, "A", "B", 'A', in00, 'B', in10);
+                        recipes.addRecipe(output, "A", "B", 'A', in00, 'B', in10, hidden);
                     }
                 } else if (width == 2){
                     IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
@@ -121,7 +135,7 @@ public class AdvRecipeSupport {
                     if (in00 == null && in10 == null && in01 == null && in11 == null){
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
-                        recipes.addRecipe(output, "AB", "CD", 'A', in00, 'B', in01, 'C', in10, 'D', in11);
+                        recipes.addRecipe(output, "AB", "CD", 'A', in00, 'B', in01, 'C', in10, 'D', in11, hidden);
                     }
                 } else if (width == 3){
                     IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
@@ -133,7 +147,7 @@ public class AdvRecipeSupport {
                     if (in00 == null && in10 == null && in01 == null && in11 == null && in02 == null && in12 == null){
                         CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                     } else {
-                        recipes.addRecipe(output, "ABC", "DEF", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12);
+                        recipes.addRecipe(output, "ABC", "DEF", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, hidden);
                     }
                 }
             } else if (height == 3){
@@ -151,7 +165,7 @@ public class AdvRecipeSupport {
                         if (in00 == null && in10 == null && in20 == null){
                             CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
-                            recipes.addRecipe(output, "A", "B", "C", 'A', in00, 'B', in10, 'C', in20);
+                            recipes.addRecipe(output, "A", "B", "C", 'A', in00, 'B', in10, 'C', in20, hidden);
                         }
                     } else if (width == 2){
                         IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
@@ -163,7 +177,7 @@ public class AdvRecipeSupport {
                         if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null){
                             CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
-                            recipes.addRecipe(output, "AB", "CD", "EF", 'A', in00, 'B', in01, 'C', in10, 'D', in11, 'E', in20, 'F', in21);
+                            recipes.addRecipe(output, "AB", "CD", "EF", 'A', in00, 'B', in01, 'C', in10, 'D', in11, 'E', in20, 'F', in21, hidden);
                         }
                     } else if (width == 3){
                         IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
@@ -178,7 +192,7 @@ public class AdvRecipeSupport {
                         if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null && in02 == null && in12 == null && in22 == null){
                             CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
                         } else {
-                            recipes.addRecipe(output, "ABC", "DEF", "GHI", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, 'G', in20, 'H', in21, 'I', in22);
+                            recipes.addRecipe(output, "ABC", "DEF", "GHI", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, 'G', in20, 'H', in21, 'I', in22, hidden);
                         }
                     }
                 } else {
