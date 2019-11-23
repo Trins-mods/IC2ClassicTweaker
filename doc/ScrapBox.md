@@ -8,6 +8,8 @@ import mods.ic2.ScrapBox;
 
 ### Methods
 
+See [ScrapBox](https://github.com/Team-AbCiv/IC2Tweaker/blob/bleeding/doc/ScrapBox.md) for info on other methods. 
+
 #### `removeDrop(ItemStack)`
 
 ```java
