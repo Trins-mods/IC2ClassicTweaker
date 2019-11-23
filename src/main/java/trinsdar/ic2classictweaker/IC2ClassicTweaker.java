@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-@Mod(modid = IC2ClassicTweaker.MODID, name = IC2ClassicTweaker.MODNAME, version = IC2ClassicTweaker.VERSION, dependencies = "required-after:ic2;required-after:ic2-classic-spmod;required-after:crafttweaker;required-after:ic2_tweaker;before:jei")
+@Mod(modid = IC2ClassicTweaker.MODID, name = IC2ClassicTweaker.MODNAME, version = IC2ClassicTweaker.VERSION, dependencies = "required-after:ic2;required-after:ic2-classic-spmod;required-after:crafttweaker;before:jei")
 public class IC2ClassicTweaker {
     public static final String MODID = "ic2_classic_tweaker";
     public static final String MODNAME = "IC2 Classic Tweaker";
