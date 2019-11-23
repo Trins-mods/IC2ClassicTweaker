@@ -19,7 +19,7 @@ import java.util.Locale;
 public class ScrapboxSupport {
 
     @ZenMethod
-    public static void removeScrapboxDrop(IItemStack item){
+    public static void removeDrop(IItemStack item){
         CraftTweakerActions.apply(new ScrapBoxRemoveAction(CraftTweakerMC.getItemStack(item)));
     }
 
