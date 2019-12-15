@@ -3,6 +3,8 @@ import mods.ic2.CanningMachine;
 import mods.ic2.ClassicElectrolyzer;
 import mods.ic2.LiquidFuelGenerator;
 import mods.ic2.RareEarthExtractor;
+import mods.ic2.AdvCrafting;
+import mods.ic2.ScrapBox;
 
 /*
 * Register Existing filled tin can inputs for the Effect you want.
