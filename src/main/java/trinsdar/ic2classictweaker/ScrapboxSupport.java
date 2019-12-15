@@ -6,10 +6,9 @@ import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ic2.api.classic.recipe.ClassicRecipes;
-import ic2.api.classic.recipe.custom.IClassicScrapBoxManager;
 import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenExpansion;
-import stanhebben.zenscript.annotations.ZenMethod;
+import stanhebben.zenscript.annotations.ZenMethodStatic;
 
 import java.util.Locale;
 
@@ -18,7 +17,7 @@ import java.util.Locale;
 @ZenExpansion("mods.ic2.ScrapBox")
 public class ScrapboxSupport {
 
-    @ZenMethod
+    @ZenMethodStatic
     public static void removeDrop(IItemStack item){
         CraftTweakerActions.apply(new ScrapBoxRemoveAction(CraftTweakerMC.getItemStack(item)));
     }
@@ -32,11 +31,7 @@ public class ScrapboxSupport {
 
         @Override
         public void apply() {
-            for (IClassicScrapBoxManager.IDrop drop : ClassicRecipes.scrapboxDrops.getEntries()){
-                if (drop.getDrop().isItemEqual(item)){
-                    ClassicRecipes.scrapboxDrops.removeDrop(drop);
-                }
-            }
+            IC2ClassicTweaker.scrapboxToRemove.add(item);
         }
 
         @Override
