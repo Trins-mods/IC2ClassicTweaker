@@ -13,6 +13,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class AdvRecipeCT extends AdvRecipe {
 
@@ -83,7 +84,7 @@ public class AdvRecipeCT extends AdvRecipe {
 
                 }
 
-                this.recipeID = getRecipeID(Arrays.asList(this.input), Arrays.asList(this.output), recipeID);
+                this.recipeID = getRecipeID(Arrays.asList(this.input), Collections.singletonList(this.output), recipeID);
                 this.setRegistryNameFixed(this.recipeID);
 
                 slot = 0;
@@ -92,7 +93,7 @@ public class AdvRecipeCT extends AdvRecipe {
                 for(int y = 0; y < this.height; ++y) {
                     for(int x = 0; x < this.length; ++x) {
                         IRecipeInput obj = IC2RecipeInputs.of(ingredients[y][x]);
-                        IRecipeObject entry = this.addObject(x + y * 3, obj); // currently private
+                        IRecipeObject entry = this.addObject(x + y * 3, obj);
                         ++slot;
                         if (entry != null) {
                             this.ingredients.set(entry.getSlot(), Ingredient.fromStacks((ItemStack[])entry.getItems().toArray(new ItemStack[0])));
