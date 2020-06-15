@@ -13,7 +13,9 @@ public class IC2RecipeInputs {
     }
 
     static IRecipeInput of(IIngredient ingredient) {
-        // TODO Dealing with null
+        if (ingredient == null){
+            return null;
+        }
         if (ingredient instanceof IItemStack) {
             return IC2RecipeInputs.of((IItemStack)ingredient);
         } else if (ingredient instanceof IOreDictEntry) {

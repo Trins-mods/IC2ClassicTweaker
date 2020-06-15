@@ -7,8 +7,8 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ic2.api.classic.recipe.ClassicRecipes;
-import ic2.api.classic.recipe.crafting.ICraftingRecipeList;
 import ic2.api.recipe.IRecipeInput;
+import ic2.core.item.recipe.AdvRecipeBase;
 import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -75,129 +75,10 @@ public class AdvRecipeSupport {
 
         @Override
         public void apply() {
-            ICraftingRecipeList recipes = ClassicRecipes.advCrafting;
-            int height = input.length;
-            int width;
-            if (height > 3){
-                CraftTweakerActions.printError("Outer Recipe Array can only have a max of 3 inner arrays!");
-            }
-            if (height == 1){
-                width = input[0].length;
-                if (width > 3){
-                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
-                }
-                if (width == 1){
-                    if (input[0][0] != null){
-                        recipes.addRecipe(output, "A", 'A', IC2RecipeInputs.of(input[0][0]), hidden);
-                    } else {
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    }
-                } else if (width == 2){
-                    IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                    IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                    if (in00 == null && in01 == null){
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    } else {
-                        recipes.addRecipe(output, "AB", 'A', in00, 'B', in01, hidden);
-                    }
-                } else if (width == 3){
-                    IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                    IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                    IRecipeInput in02 = input[0][2] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                    if (in00 == null && in01 == null && in02 == null){
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    } else {
-                        recipes.addRecipe(output, "ABC", 'A', in00, 'B', in01, 'C', in02, hidden);
-                    }
-                }
-            } else if (height == 2){
-                width = input[0].length;
-                int width2 = input[1].length;
-                if (width != width2){
-                    CraftTweakerActions.printError("Inner Recipe Arrays must all be the same lengths!");
-                }
-                if (width > 3 || width2 > 3){
-                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
-                }
-                if (width == 1){
-                    IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                    IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                    if (in00 == null && in10 == null){
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    } else {
-                        recipes.addRecipe(output, "A", "B", 'A', in00, 'B', in10, hidden);
-                    }
-                } else if (width == 2){
-                    IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                    IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                    IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                    IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
-                    if (in00 == null && in10 == null && in01 == null && in11 == null){
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    } else {
-                        recipes.addRecipe(output, "AB", "CD", 'A', in00, 'B', in01, 'C', in10, 'D', in11, hidden);
-                    }
-                } else if (width == 3){
-                    IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                    IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                    IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                    IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
-                    IRecipeInput in02 = input[0][2] != null ? IC2RecipeInputs.of(input[0][2]) : null;
-                    IRecipeInput in12 = input[1][2] != null ? IC2RecipeInputs.of(input[1][2]) : null;
-                    if (in00 == null && in10 == null && in01 == null && in11 == null && in02 == null && in12 == null){
-                        CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                    } else {
-                        recipes.addRecipe(output, "ABC", "DEF", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, hidden);
-                    }
-                }
-            } else if (height == 3){
-                width = input[0].length;
-                int width2 = input[1].length;
-                int width3 = input[2].length;
-                if (width > 3 || width2 > 3 || width3 > 3){
-                    CraftTweakerActions.printError("Inner Recipe Array can only have a max of 3 inputs!");
-                }
-                if (width == width2 && width == width3){
-                    if (width == 1){
-                        IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                        IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                        IRecipeInput in20 = input[2][0] != null ? IC2RecipeInputs.of(input[2][0]) : null;
-                        if (in00 == null && in10 == null && in20 == null){
-                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                        } else {
-                            recipes.addRecipe(output, "A", "B", "C", 'A', in00, 'B', in10, 'C', in20, hidden);
-                        }
-                    } else if (width == 2){
-                        IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                        IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                        IRecipeInput in20 = input[2][0] != null ? IC2RecipeInputs.of(input[2][0]) : null;
-                        IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                        IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
-                        IRecipeInput in21 = input[2][1] != null ? IC2RecipeInputs.of(input[2][1]) : null;
-                        if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null){
-                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                        } else {
-                            recipes.addRecipe(output, "AB", "CD", "EF", 'A', in00, 'B', in01, 'C', in10, 'D', in11, 'E', in20, 'F', in21, hidden);
-                        }
-                    } else if (width == 3){
-                        IRecipeInput in00 = input[0][0] != null ? IC2RecipeInputs.of(input[0][0]) : null;
-                        IRecipeInput in10 = input[1][0] != null ? IC2RecipeInputs.of(input[1][0]) : null;
-                        IRecipeInput in20 = input[2][0] != null ? IC2RecipeInputs.of(input[2][0]) : null;
-                        IRecipeInput in01 = input[0][1] != null ? IC2RecipeInputs.of(input[0][1]) : null;
-                        IRecipeInput in11 = input[1][1] != null ? IC2RecipeInputs.of(input[1][1]) : null;
-                        IRecipeInput in21 = input[2][1] != null ? IC2RecipeInputs.of(input[2][1]) : null;
-                        IRecipeInput in02 = input[0][2] != null ? IC2RecipeInputs.of(input[0][2]) : null;
-                        IRecipeInput in12 = input[1][2] != null ? IC2RecipeInputs.of(input[1][2]) : null;
-                        IRecipeInput in22 = input[2][2] != null ? IC2RecipeInputs.of(input[2][2]) : null;
-                        if (in00 == null && in10 == null && in20 == null && in01 == null && in11 == null && in21 == null && in02 == null && in12 == null && in22 == null){
-                            CraftTweakerActions.printError("Recipe must have at least one nonnull input!");
-                        } else {
-                            recipes.addRecipe(output, "ABC", "DEF", "GHI", 'A', in00, 'B', in01, 'C', in02, 'D', in10, 'E', in11, 'F', in12, 'G', in20, 'H', in21, 'I', in22, hidden);
-                        }
-                    }
-                } else {
-                    CraftTweakerActions.printError("Inner Recipe Arrays must all be the same lengths!");
-                }
+            try {
+                AdvRecipeBase.registerRecipe(new AdvRecipeCT(output, input, hidden));
+            } catch (Exception e){
+                CraftTweakerActions.printError(e.getLocalizedMessage());
             }
         }
 
