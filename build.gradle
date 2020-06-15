@@ -1,15 +1,17 @@
 buildscript {
     repositories {
         jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
         maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url "https://plugins.gradle.org/m2/"
         }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "com.wynprice.cursemaven:CurseMaven:2.1.0"
     }
 }
+apply plugin: "com.wynprice.cursemaven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = mod_version
@@ -51,6 +53,8 @@ dependencies {
         exclude group: 'org.ow2.asm'
         exclude group: 'com.google.code.gson'
     }
+
+    compile "curse.maven:ic2-classic:2979877"
 }
 
 jar {
