@@ -23,6 +23,11 @@ public class SawmillSupport {
         CraftTweakerActions.apply(new SawmillRecipeAction(IC2RecipeInputs.of(input),CraftTweakerMC.getItemStack(output)));
     }
 
+    @ZenMethod
+    public static void removeRecipe(IIngredient input){
+        CraftTweakerActions.apply(new BasicRecipeRemoveManager(ClassicRecipes.sawMill, IC2RecipeInputs.of(input)));
+    }
+
     private static final class SawmillRecipeAction implements IAction {
 
         private final IRecipeInput input;
