@@ -4,7 +4,10 @@ import crafttweaker.IAction;
 import ic2.api.classic.recipe.ClassicRecipes;
 import ic2.api.classic.recipe.machine.IMachineRecipeList;
 import ic2.api.recipe.IRecipeInput;
+import net.minecraft.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class BasicRecipeRemoveManager implements IAction {
@@ -18,7 +21,16 @@ public class BasicRecipeRemoveManager implements IAction {
 
     @Override
     public void apply() {
-        list.removeRecipe(input);
+        List<IMachineRecipeList.RecipeEntry> copy = new ArrayList<>(list.getRecipeMap());
+        for (IMachineRecipeList.RecipeEntry entry : copy){
+            IRecipeInput listInput = entry.getInput();
+            for (ItemStack stack : input.getInputs()){
+                if (listInput.matches(stack)){
+                    list.removeRecipe(listInput);
+                    break;
+                }
+            }
+        }
     }
 
     @Override
