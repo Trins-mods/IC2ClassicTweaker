@@ -55,6 +55,7 @@ dependencies {
     }
 
     compile "curse.maven:ic2-classic:2979877"
+    deobfProvided "curse.maven:ic2c-extras:3033496"
 }
 
 jar {
