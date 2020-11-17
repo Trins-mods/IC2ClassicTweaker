@@ -26,11 +26,12 @@ public class RareEarthExtractorSupport {
         CraftTweakerActions.apply(new RareEarthValueAdditionAction(value, CraftTweakerMC.getItemStacks(input)));
     }
 
-    public static void removeRareEarthEntries(String input, @Optional() int meta) {
-        CraftTweakerActions.apply(new RareEarthValueRemovalAction(input, meta));
+    @ZenMethod
+    public static void removeRareEarthEntries(IItemStack input) {
+        CraftTweakerActions.apply(new RareEarthValueRemovalAction(CraftTweakerMC.getItemStack(input)));
     }
 
-    private static final class RareEarthValueAdditionAction implements IAction {
+    private static final class RareEarthValueAdditionAction implements ILateAction {
 
         private final ItemStack[] input;
         private final float value;
@@ -51,20 +52,17 @@ public class RareEarthExtractorSupport {
         }
     }
 
-    private static final class RareEarthValueRemovalAction implements IAction {
+    public static final class RareEarthValueRemovalAction implements ILateAction {
 
-        private final String input;
-        private final int meta;
+        private final ItemStack input;
 
-        RareEarthValueRemovalAction(String input, int meta) {
+        RareEarthValueRemovalAction(ItemStack input) {
             this.input = input;
-            this.meta = meta;
         }
 
         @Override
         public void apply() {
-            ResourceLocation id = new ResourceLocation(input);
-            ClassicRecipes.earthExtractor.removeEntry(new ItemStack(Item.getByNameOrId(input), 1, meta));
+            ClassicRecipes.earthExtractor.removeEntry(input);
         }
 
         @Override

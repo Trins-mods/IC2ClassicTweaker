@@ -12,17 +12,28 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class BasicRecipeAddManager implements IAction {
+public class BasicRecipeAddManager implements ILateAction {
     private final IMachineRecipeList manager;
     private final IRecipeInput input;
     private final NBTTagCompound data;
     private final ItemStack[] output;
+    private boolean late = true;
 
     BasicRecipeAddManager(IMachineRecipeList manager, IRecipeInput input, @Nullable NBTTagCompound data, ItemStack... output) {
         this.manager = manager;
         this.input = input;
         this.data = data;
         this.output = output;
+    }
+
+    BasicRecipeAddManager setLate(boolean late){
+        this.late = late;
+        return this;
+    }
+
+    @Override
+    public boolean isLate() {
+        return late;
     }
 
     @Override

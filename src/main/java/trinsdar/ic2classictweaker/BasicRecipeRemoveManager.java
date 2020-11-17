@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class BasicRecipeRemoveManager implements IAction {
+public class BasicRecipeRemoveManager implements ILateAction {
     IMachineRecipeList list;
     IRecipeInput input;
 

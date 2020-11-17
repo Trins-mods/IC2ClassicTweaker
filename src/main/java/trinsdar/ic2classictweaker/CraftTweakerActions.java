@@ -8,7 +8,7 @@ public class CraftTweakerActions {
     private static final boolean DEBUG = Boolean.getBoolean("ic2_classic_tweaker.debug");
 
     static void apply(IAction action) {
-        if (action instanceof BasicRecipeRemoveManager || action instanceof BasicRecipeAddManager){
+        if ((action instanceof ILateAction && ((ILateAction)action).isLate())){
             CraftTweaker.LATE_ACTIONS.add(action);
             return;
         }

@@ -20,6 +20,11 @@ import java.util.Locale;
 public class SawmillSupport {
     @ZenMethod
     public static void addRecipe(IItemStack output, IIngredient input) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.sawMill, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(false));
+    }
+
+    @ZenMethod
+    public static void addLateRecipe(IItemStack output, IIngredient input) {
         CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.sawMill, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
     }
 

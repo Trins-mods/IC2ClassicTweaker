@@ -49,10 +49,12 @@ public class CanningMachineSupport {
         CraftTweakerActions.apply(new AddCanningRecipeAction(CraftTweakerMC.getItemStack(output), IC2RecipeInputs.of(input), CraftTweakerMC.getItemStack(container)));
     }
 
+    @ZenMethod
     public static void removeCanningContainer(IItemStack container) {
         CraftTweakerActions.apply(new RemoveCanningContainerAction(CraftTweakerMC.getItemStack(container)));
     }
 
+    @ZenMethod
     public static void removeCanningRecipe(IItemStack container, IItemStack input) {
         CraftTweakerActions.apply(new RemoveCanningRecipeAction(CraftTweakerMC.getItemStack(container), CraftTweakerMC.getItemStack(input)));
     }
@@ -143,7 +145,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class RemoveCanningContainerAction implements IAction {
+    private static final class RemoveCanningContainerAction implements ILateAction {
 
         private final ItemStack container;
 
@@ -162,7 +164,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class RemoveCanningRecipeAction implements IAction {
+    private static final class RemoveCanningRecipeAction implements ILateAction {
 
         private final ItemStack input;
         private final ItemStack container;
@@ -183,7 +185,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class DeleteItemFuelAction implements IAction {
+    private static final class DeleteItemFuelAction implements ILateAction {
 
         private final ItemStack fuel;
 
@@ -202,7 +204,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class DeleteEffectIdAction implements IAction {
+    private static final class DeleteEffectIdAction implements ILateAction {
 
         private final int id;
         private final boolean items;

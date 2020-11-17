@@ -13,7 +13,7 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 @ZenRegister
 public class MaceratorSupport {
     @ZenMethodStatic
-    public static void addRecipe(IItemStack output, IIngredient input) {
+    public static void addLateRecipe(IItemStack output, IIngredient input) {
         CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.macerator, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
     }
 
