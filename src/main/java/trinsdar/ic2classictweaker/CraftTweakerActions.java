@@ -5,14 +5,13 @@ import crafttweaker.IAction;
 import crafttweaker.mc1120.CraftTweaker;
 
 public class CraftTweakerActions {
-    private static final boolean DEBUG = Boolean.getBoolean("ic2_classic_tweaker.debug");
 
     static void apply(IAction action) {
         if ((action instanceof ILateAction && ((ILateAction)action).isLate())){
             CraftTweaker.LATE_ACTIONS.add(action);
             return;
         }
-        if (DEBUG) {
+        if (Configuration.debug) {
             CraftTweakerAPI.apply(action);
         } else {
             action.apply();
