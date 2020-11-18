@@ -58,6 +58,9 @@ public class AdvRecipeSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Stacked Shapeless Crafting Recipe[%s -> %s] to %s", Arrays.deepToString(this.inputs), this.output, ClassicRecipes.advCrafting);
         }
     }
@@ -84,6 +87,9 @@ public class AdvRecipeSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Stacked Shaped Crafting Recipe[%s -> %s] to %s", Arrays.deepToString(this.input), this.output, ClassicRecipes.advCrafting);
         }
     }

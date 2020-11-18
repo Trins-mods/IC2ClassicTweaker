@@ -48,6 +48,9 @@ public class RareEarthExtractorSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Entry[%s, %s] to %s", this.value, Arrays.deepToString(this.input), ClassicRecipes.earthExtractor);
         }
     }
@@ -67,6 +70,9 @@ public class RareEarthExtractorSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Remove Entry[%s] from %s", this.input, ClassicRecipes.earthExtractor);
         }
     }

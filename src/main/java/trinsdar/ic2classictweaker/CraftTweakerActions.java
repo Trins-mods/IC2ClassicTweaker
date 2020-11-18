@@ -11,11 +11,7 @@ public class CraftTweakerActions {
             CraftTweaker.LATE_ACTIONS.add(action);
             return;
         }
-        if (Configuration.debug) {
-            CraftTweakerAPI.apply(action);
-        } else {
-            action.apply();
-        }
+        CraftTweakerAPI.apply(action);
     }
 
     static void printError(String message) {

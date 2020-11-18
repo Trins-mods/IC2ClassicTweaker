@@ -50,6 +50,9 @@ public class ClassicElectrolyzerSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Both Recipe[%s, %s -> %s] to %s", this.input, this.charge, this.output, ClassicRecipes.electrolyzer);
         }
     }
@@ -73,6 +76,9 @@ public class ClassicElectrolyzerSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Charge Recipe[%s, %s -> %s] to %s", this.input, this.charge, this.output, ClassicRecipes.electrolyzer);
         }
     }
@@ -96,6 +102,9 @@ public class ClassicElectrolyzerSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Discharge Recipe[%s, %s -> %s] to %s", this.input, this.charge, this.output, ClassicRecipes.electrolyzer);
         }
     }

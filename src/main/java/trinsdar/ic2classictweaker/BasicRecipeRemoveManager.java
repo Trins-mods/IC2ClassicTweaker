@@ -25,27 +25,13 @@ public class BasicRecipeRemoveManager implements ILateAction {
     @Override
     public void apply() {
         list.removeRecipe(input);
-        /*List<IMachineRecipeList.RecipeEntry> copy = new ArrayList<>();
-        int i = 0;
-        for (IMachineRecipeList.RecipeEntry entry : ClassicRecipes.macerator.getRecipeMap()){
-            IRecipeInput listInput = entry.getInput();
-            i++;
-            for (ItemStack stack : input.getInputs()){
-                if (listInput.matches(stack)){
-                    copy.add(entry);
-                    CraftTweakerAPI.logInfo("Removing recipe of " + stack.getDisplayName() + " in " + "ic2-classic-tweaker");
-                    break;
-                }
-            }
-        }
-        i = 0;
-        for (IMachineRecipeList.RecipeEntry entry : list.getRecipeMap()){
-        }
-        System.out.println(i);*/
     }
 
     @Override
     public String describe() {
+        if (!Configuration.debug){
+            return null;
+        }
         return String.format(Locale.ENGLISH, "Remove Recipe[%s] from %s", this.input, this.list);
     }
 }

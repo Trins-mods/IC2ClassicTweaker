@@ -41,6 +41,9 @@ public class LiquidFuelGeneratorSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Fuel[%s, %s, %s] to %s", this.fluid, this.time, this.power, ClassicRecipes.fluidGenerator);
         }
     }

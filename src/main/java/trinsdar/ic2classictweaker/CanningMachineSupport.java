@@ -76,6 +76,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.id, Arrays.deepToString(this.input), ClassicRecipes.canningMachine);
         }
     }
@@ -97,6 +100,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.value, this.input, ClassicRecipes.canningMachine);
         }
     }
@@ -118,6 +124,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.multiplier, this.input, ClassicRecipes.canningMachine);
         }
     }
@@ -141,6 +150,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Add Recipe[%s %s -> %s] to %s", this.input, this.container, this.output, ClassicRecipes.canningMachine);
         }
     }
@@ -160,6 +172,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Remove Canning Container[%s] from %s", this.container, ClassicRecipes.canningMachine);
         }
     }
@@ -181,6 +196,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Remove Recipe[%s %s] from %s", this.input, this.container, ClassicRecipes.canningMachine);
         }
     }
@@ -200,7 +218,10 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
-            return String.format(Locale.ENGLISH, "Add Recipe[%s %s] to %s", this.fuel, ClassicRecipes.canningMachine);
+            if (!Configuration.debug){
+                return null;
+            }
+            return String.format(Locale.ENGLISH, "Remove Fuel Item %s from %s", this.fuel, ClassicRecipes.canningMachine);
         }
     }
 
@@ -221,6 +242,9 @@ public class CanningMachineSupport {
 
         @Override
         public String describe() {
+            if (!Configuration.debug){
+                return null;
+            }
             return String.format(Locale.ENGLISH, "Remove Food Effect[%s %s] from %s", this.id, this.items, ClassicRecipes.canningMachine);
         }
     }
