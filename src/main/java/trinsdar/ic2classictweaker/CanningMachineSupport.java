@@ -56,7 +56,7 @@ public class CanningMachineSupport {
 
     @ZenMethod
     public static void removeCanningRecipe(IItemStack container, IItemStack input) {
-        CraftTweakerActions.apply(new RemoveCanningRecipeAction(CraftTweakerMC.getItemStack(container), CraftTweakerMC.getItemStack(input)));
+        CraftTweakerActions.apply(new RemoveCanningRecipeAction(CraftTweakerMC.getItemStack(input), CraftTweakerMC.getItemStack(container)));
     }
 
     private static final class RegisterItemsForEffectAction implements IAction {
