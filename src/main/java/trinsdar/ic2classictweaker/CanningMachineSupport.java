@@ -59,7 +59,7 @@ public class CanningMachineSupport {
         CraftTweakerActions.apply(new RemoveCanningRecipeAction(CraftTweakerMC.getItemStack(input), CraftTweakerMC.getItemStack(container)));
     }
 
-    private static final class RegisterItemsForEffectAction implements IAction {
+    private static final class RegisterItemsForEffectAction implements ILateAction {
 
         private final int id;
         private final ItemStack[] input;
@@ -83,7 +83,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class RegisterFuelValueAction implements IAction {
+    private static final class RegisterFuelValueAction implements ILateAction {
 
         private final int value;
         private final ItemStack input;
@@ -107,7 +107,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class RegisterFuelMultiplierAction implements IAction {
+    private static final class RegisterFuelMultiplierAction implements ILateAction {
 
         private final float multiplier;
         private final ItemStack input;
@@ -131,7 +131,7 @@ public class CanningMachineSupport {
         }
     }
 
-    private static final class AddCanningRecipeAction implements IAction {
+    private static final class AddCanningRecipeAction implements ILateAction {
 
         private final ItemStack output;
         private final IRecipeInput input;
