@@ -20,7 +20,7 @@ public class AdvRecipeCT extends AdvRecipe {
     public AdvRecipeCT(ItemStack out, IIngredient[][] ingredients, boolean hidden){
         super(ItemDisplayIcon.createWithFluidStack(new FluidStack(FluidRegistry.WATER, 1000)), new Object[]{"w", 'w', ItemDisplayIcon.createWithFluidStack(new FluidStack(FluidRegistry.LAVA, 1000)), true});
 
-        this.recipeID = "shaped_" + out.getUnlocalizedName() + "_ct";
+        this.recipeID = "shaped_" + out.getTranslationKey() + "_ct";
         this.xOffset = -1;
         this.yOffset = -1;
         this.height = 0;

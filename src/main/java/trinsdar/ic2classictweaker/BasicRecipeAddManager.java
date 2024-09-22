@@ -38,7 +38,7 @@ public class BasicRecipeAddManager implements ILateAction {
 
     @Override
     public void apply() {
-        this.manager.addRecipe(this.input, new MachineOutput(this.data, output), output[0].getUnlocalizedName() + "_ct");
+        this.manager.addRecipe(this.input, new MachineOutput(this.data, output), output[0].getTranslationKey() + "_ct");
     }
 
     @Override
