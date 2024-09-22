@@ -6,6 +6,7 @@ import ic2.core.platform.registry.Ic2Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -16,7 +17,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod(modid = IC2ClassicTweaker.MODID, name = IC2ClassicTweaker.MODNAME, version = IC2ClassicTweaker.VERSION, dependencies = "required-after:ic2;required-after:ic2-classic-spmod;required-after:crafttweaker;before:jei")
+@Mod(modid = IC2ClassicTweaker.MODID, name = IC2ClassicTweaker.MODNAME, version = IC2ClassicTweaker.VERSION, dependencies = "required-after:ic2;required-after:ic2-classic-spmod;required-after:crafttweaker;before:ic2_tweaker;before:jei")
 public class IC2ClassicTweaker {
     public static final String MODID = "ic2_classic_tweaker";
     public static final String MODNAME = "IC2 Classic Tweaker";
@@ -29,6 +30,9 @@ public class IC2ClassicTweaker {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event){
         logger = event.getModLog();
+        if (Loader.isModLoaded("ic2_tweaker")){
+            throw new IncompatibleModException();
+        }
         scrapboxToRemove = new ArrayList<>();
     }
 
