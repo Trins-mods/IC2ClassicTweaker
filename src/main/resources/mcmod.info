@@ -2,10 +2,10 @@
   {
     "modid": "ic2_classic_tweaker",
     "name": "IC2 Classic Tweaker",
-    "description": "There are some people who insist using CraftTweaker for tweaking everything. So here you are: crafttwekaer support for machines in ic2 classic not supported by ic2 tweaker.",
+    "description": "Just a simple mod that makes it possible to add and remove recipes from ic2 classic machines using crafttweaker. Note: Not compatible with ic2 tweaker.",
     "version": "${modversion}",
     "mcversion": "${mcversion}",
-    "url" : "https://github.com/Team-AbCiv/IC2Tweaker",
+    "url" : "https://github.com/Trins-mods/IC2ClassicTweaker",
     "authorList": [ "Trinsdar" ],
     "credits": "3TUSK, for his ic2 tweaker upon which I have based some of my stuff off.",
     "logoFile": "logo.png",
