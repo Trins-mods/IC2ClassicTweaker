@@ -10,15 +10,20 @@ import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenExpansion("mods.ic2.Extractor")
+@ZenClass("mods.ic2.Extractor")
 @ZenRegister
 public class ExtractorSupport {
-    @ZenMethodStatic
-    public static void addLateRecipe(IItemStack output, IIngredient input) {
+    @ZenMethod
+    public static void addRecipe(IItemStack output, IIngredient input) {
         CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.extractor, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
+    public static void addLateRecipe(IItemStack output, IIngredient input) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.extractor, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(true));
+    }
+
+    @ZenMethod
     public static void removeRecipe(IIngredient input){
         CraftTweakerActions.apply(new BasicRecipeRemoveManager(ClassicRecipes.extractor, IC2RecipeInputs.of(input)));
     }

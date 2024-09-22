@@ -15,14 +15,21 @@ import stanhebben.zenscript.annotations.ZenMethodStatic;
 import trinsdar.ic2c_extras.recipes.Ic2cExtrasRecipes;
 
 @ModOnly("ic2c_extras")
-@ZenExpansion("mods.ic2.OreWasher")
+@ZenClass("mods.ic2.OreWasher")
 @ZenRegister
 public class OreWasherSupport {
-    @ZenMethodStatic
-    public static void addLateRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int water) {
+    @ZenMethod
+    public static void addRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int water) {
         NBTTagCompound data = new NBTTagCompound();
         data.setInteger("amount", water);
         CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.oreWashingPlant, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)));
+    }
+
+    @ZenMethod
+    public static void addLateRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int water) {
+        NBTTagCompound data = new NBTTagCompound();
+        data.setInteger("amount", water);
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.oreWashingPlant, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)).setLate(true));
     }
 
     @ZenMethodStatic

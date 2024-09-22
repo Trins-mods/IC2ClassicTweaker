@@ -17,7 +17,7 @@ public class BasicRecipeAddManager implements ILateAction {
     private final IRecipeInput input;
     private final NBTTagCompound data;
     private final ItemStack[] output;
-    private boolean late = true;
+    private boolean late = false;
 
     BasicRecipeAddManager(IMachineRecipeList manager, IRecipeInput input, @Nullable NBTTagCompound data, ItemStack... output) {
         this.manager = manager;

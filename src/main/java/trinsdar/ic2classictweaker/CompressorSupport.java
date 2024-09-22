@@ -10,15 +10,20 @@ import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
 import stanhebben.zenscript.annotations.ZenMethodStatic;
 
-@ZenExpansion("mods.ic2.Compressor")
+@ZenClass("mods.ic2.Compressor")
 @ZenRegister
 public class CompressorSupport {
-    @ZenMethodStatic
-    public static void addLateRecipe(IItemStack output, IIngredient input) {
+    @ZenMethod
+    public static void addRecipe(IItemStack output, IIngredient input) {
         CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.compressor, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
+    public static void addLateRecipe(IItemStack output, IIngredient input) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(ClassicRecipes.compressor, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(true));
+    }
+
+    @ZenMethod
     public static void removeRecipe(IIngredient input){
         CraftTweakerActions.apply(new BasicRecipeRemoveManager(ClassicRecipes.compressor, IC2RecipeInputs.of(input)));
     }
