@@ -22,14 +22,14 @@ public class ThermalCentrifugeSupport {
     public static void addRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int minHeat) {
         NBTTagCompound data = new NBTTagCompound();
         data.setInteger("minHeat", minHeat);
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)));
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input), data, 0.0f, CraftTweakerMC.getItemStacks(outputs)));
     }
 
     @ZenMethod
     public static void addLateRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int minHeat) {
         NBTTagCompound data = new NBTTagCompound();
         data.setInteger("minHeat", minHeat);
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)).setLate(true));
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input), data, 0.0f, CraftTweakerMC.getItemStacks(outputs)).setLate(true));
     }
 
     @ZenMethod

@@ -57,7 +57,8 @@ dependencies {
     }
 
     implementation rfg.deobf("curse.maven:ic2_classic-242942:4048720")
-    compileOnly "curse.maven:ic2c_extras-302906:3057114"
+    implementation rfg.deobf("curse.maven:ic2c_extras-302906:4841092")
+    implementation rfg.deobf("curse.maven:mixin-booter-419286:5739618")
 }
 
 jar {

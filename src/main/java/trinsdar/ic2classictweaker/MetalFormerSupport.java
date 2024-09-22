@@ -6,6 +6,7 @@ import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import ic2.api.classic.recipe.ClassicRecipes;
+import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenExpansion;
 import stanhebben.zenscript.annotations.ZenMethod;
@@ -17,33 +18,33 @@ import trinsdar.ic2c_extras.recipes.Ic2cExtrasRecipes;
 @ZenRegister
 public class MetalFormerSupport {
     @ZenMethod
-    public static void addCuttingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.cutting, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
+    public static void addCuttingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.cutting, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)));
     }
 
     @ZenMethod
-    public static void addRollingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.rolling, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
+    public static void addRollingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.rolling, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)));
     }
 
     @ZenMethod
-    public static void addExtrudingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.extruding, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)));
+    public static void addExtrudingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.extruding, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)));
     }
 
     @ZenMethod
-    public static void addLateCuttingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.cutting, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(true));
+    public static void addLateCuttingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.cutting, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)).setLate(true));
     }
 
     @ZenMethod
-    public static void addLateRollingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.rolling, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(true));
+    public static void addLateRollingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.rolling, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)).setLate(true));
     }
 
     @ZenMethod
-    public static void addLateExtrudingRecipe(IItemStack output, IIngredient input) {
-        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.extruding, IC2RecipeInputs.of(input),null, CraftTweakerMC.getItemStack(output)).setLate(true));
+    public static void addLateExtrudingRecipe(IItemStack output, IIngredient input, @Optional float exp) {
+        CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.extruding, IC2RecipeInputs.of(input),null, exp, CraftTweakerMC.getItemStack(output)).setLate(true));
     }
 
     @ZenMethod

@@ -2,6 +2,7 @@ package trinsdar.ic2classictweaker;
 
 import crafttweaker.IAction;
 import ic2.api.classic.recipe.machine.IMachineRecipeList;
+import ic2.api.classic.recipe.machine.MachineExpOutput;
 import ic2.api.classic.recipe.machine.MachineOutput;
 import ic2.api.recipe.IBasicMachineRecipeManager;
 import ic2.api.recipe.IRecipeInput;
@@ -18,12 +19,14 @@ public class BasicRecipeAddManager implements ILateAction {
     private final NBTTagCompound data;
     private final ItemStack[] output;
     private boolean late = false;
+    private final float exp;
 
-    BasicRecipeAddManager(IMachineRecipeList manager, IRecipeInput input, @Nullable NBTTagCompound data, ItemStack... output) {
+    BasicRecipeAddManager(IMachineRecipeList manager, IRecipeInput input, @Nullable NBTTagCompound data, float exp, ItemStack... output) {
         this.manager = manager;
         this.input = input;
         this.data = data;
         this.output = output;
+        this.exp = exp;
     }
 
     BasicRecipeAddManager setLate(boolean late){
@@ -38,7 +41,11 @@ public class BasicRecipeAddManager implements ILateAction {
 
     @Override
     public void apply() {
-        this.manager.addRecipe(this.input, new MachineOutput(this.data, output), output[0].getTranslationKey() + "_ct");
+        if (exp > 0.0F) {
+            this.manager.addRecipe(input, new MachineExpOutput(data, exp, output), output[0].getTranslationKey() + "_ct");
+        } else {
+            this.manager.addRecipe(this.input, new MachineOutput(this.data, output), output[0].getTranslationKey() + "_ct");
+        }
     }
 
     @Override
