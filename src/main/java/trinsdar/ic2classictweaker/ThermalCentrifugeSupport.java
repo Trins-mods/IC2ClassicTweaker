@@ -18,21 +18,21 @@ import trinsdar.ic2c_extras.recipes.Ic2cExtrasRecipes;
 @ZenClass("mods.ic2.ThermalCentrifuge")
 @ZenRegister
 public class ThermalCentrifugeSupport {
-    @ZenMethodStatic
+    @ZenMethod
     public static void addRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int minHeat) {
         NBTTagCompound data = new NBTTagCompound();
         data.setInteger("minHeat", minHeat);
         CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static void addLateRecipe(IItemStack[] outputs, IIngredient input, @Optional(valueLong = 1000L) int minHeat) {
         NBTTagCompound data = new NBTTagCompound();
         data.setInteger("minHeat", minHeat);
         CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input),data, CraftTweakerMC.getItemStacks(outputs)).setLate(true));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static void removeRecipe(IIngredient input){
         CraftTweakerActions.apply(new BasicRecipeRemoveManager(Ic2cExtrasRecipes.thermalCentrifuge, IC2RecipeInputs.of(input)));
     }
