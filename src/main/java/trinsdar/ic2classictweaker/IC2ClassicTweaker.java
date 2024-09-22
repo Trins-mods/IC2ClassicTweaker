@@ -2,18 +2,14 @@ package trinsdar.ic2classictweaker;
 
 import ic2.api.classic.recipe.ClassicRecipes;
 import ic2.api.classic.recipe.custom.IClassicScrapBoxManager;
-import ic2.core.platform.registry.Ic2Items;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,14 +20,17 @@ public class IC2ClassicTweaker {
     public static final String VERSION = "@VERSION@";
 
     public static Logger logger;
-    public static net.minecraftforge.common.config.Configuration config;
     public static List<ItemStack> scrapboxToRemove;
+    @SidedProxy(
+            clientSide = "trinsdar.ic2classictweaker.ProxyClient",
+            serverSide = "trinsdar.ic2classictweaker.Proxy")
+    public static Proxy proxy;
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event){
         logger = event.getModLog();
         if (Loader.isModLoaded("ic2_tweaker")){
-            throw new IncompatibleModException();
+           proxy.error();
         }
         scrapboxToRemove = new ArrayList<>();
     }
