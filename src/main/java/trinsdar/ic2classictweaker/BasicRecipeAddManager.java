@@ -43,9 +43,6 @@ public class BasicRecipeAddManager implements ILateAction {
 
     @Override
     public String describe() {
-        if (!Configuration.debug){
-            return null;
-        }
         return String.format(Locale.ENGLISH, "Add Recipe[%s, %s -> %s] to %s", this.input, this.data, Arrays.deepToString(this.output), this.manager);
     }
 }

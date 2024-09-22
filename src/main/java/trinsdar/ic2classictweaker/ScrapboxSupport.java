@@ -55,9 +55,6 @@ public class ScrapboxSupport {
 
         @Override
         public String describe() {
-            if (!Configuration.debug){
-                return null;
-            }
             return String.format(Locale.ENGLISH, "Added drop %s with weight %s to %s", item, weight, ClassicRecipes.scrapboxDrops);
         }
     }
@@ -76,9 +73,6 @@ public class ScrapboxSupport {
 
         @Override
         public String describe() {
-            if (!Configuration.debug){
-                return null;
-            }
             return String.format(Locale.ENGLISH, "Removed drop %s from %s", item, ClassicRecipes.scrapboxDrops);
         }
     }

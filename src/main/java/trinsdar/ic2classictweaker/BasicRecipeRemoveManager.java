@@ -29,9 +29,6 @@ public class BasicRecipeRemoveManager implements ILateAction {
 
     @Override
     public String describe() {
-        if (!Configuration.debug){
-            return null;
-        }
         return String.format(Locale.ENGLISH, "Remove Recipe[%s] from %s", this.input, this.list);
     }
 }
