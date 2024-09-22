@@ -15,14 +15,15 @@ import java.util.Locale;
 @ZenClass("mods.ic2.Recycler")
 @ZenRegister
 public class RecyclerSupport {
-    @ZenMethod
-    public static void addBlacklist(IItemStack item) {
-        CraftTweakerActions.apply(new RecyclingBlacklistAction(IC2RecipeInputs.of(item)));
-    }
 
     @ZenMethod
     public static void addBlacklist(IIngredient ingredient) {
         CraftTweakerActions.apply(new RecyclingBlacklistAction(IC2RecipeInputs.of(ingredient)));
+    }
+
+    @ZenMethod
+    public static void removeRecipe(IIngredient input){
+        CraftTweakerActions.apply(new BasicRecipeRemoveManager(ClassicRecipes.recycler, IC2RecipeInputs.of(input)));
     }
 
     private static final class RecyclingBlacklistAction implements IAction {
