@@ -5,9 +5,6 @@ All classes/methods are provided under `mods.ic2` package in ZenScript.
 
 A sample ZenScript file is also provided here: [`Demo.zs`](Demo.zs).
 
-Due to limitation of IC2 API, it is not possible to remove any recipes via CraftTweaker/ZenScript.
-Please refer to respective chapters to see if there is alternative solution.
-
 ### Table of Contents
 
  - [Electrolyzer](Electrolyzer.md)
@@ -17,3 +14,10 @@ Please refer to respective chapters to see if there is alternative solution.
  - [Canning Machine](CanningMachine.md)
  - [AdvCrafting](AdvCrafting.md)
  - [ScrapBox](ScrapBox.md)
+ - [Macerator](Macerator.md)
+ - [Extractor](Extractor.md)
+ - [Compressor](Compressor.md)
+ - [Recycler](Recycler.md)
+ - [OreWashingPlant](OreWasher.md)
+ - [ThermalCentrifuge](ThermalCentrifuge.md)
+ - [Roller, Cutter and Extruder](MetalFormer.md)

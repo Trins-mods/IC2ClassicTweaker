@@ -84,7 +84,7 @@ public class AdvRecipeCT extends AdvRecipe {
 
                 }
 
-                this.recipeID = getRecipeID(Arrays.asList(this.input), Collections.singletonList(this.output), recipeID);
+                this.recipeID = getRecipeID(Arrays.asList((Object[]) this.input), Collections.singletonList(this.output), recipeID);
                 this.setRegistryNameFixed(this.recipeID);
 
                 slot = 0;

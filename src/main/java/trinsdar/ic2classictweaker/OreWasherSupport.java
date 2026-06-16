@@ -32,7 +32,7 @@ public class OreWasherSupport {
         CraftTweakerActions.apply(new BasicRecipeAddManager(Ic2cExtrasRecipes.oreWashingPlant, IC2RecipeInputs.of(input), data, 0.0f, CraftTweakerMC.getItemStacks(outputs)).setLate(true));
     }
 
-    @ZenMethodStatic
+    @ZenMethod
     public static void removeRecipe(IIngredient input){
         CraftTweakerActions.apply(new BasicRecipeRemoveManager(Ic2cExtrasRecipes.oreWashingPlant, IC2RecipeInputs.of(input)));
     }
